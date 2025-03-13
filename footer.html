@@ -1,0 +1,52 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-navigation">
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="/">ホーム</a></li>
+            <li><a href="/ai/">AI記事</a></li>
+            <li><a href="/gadget/">ガジェット記事</a></li>
+            <li><a href="/profile/">プロフィール</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <div class="footer-social mt-3">
+        <a href="https://twitter.com/your_twitter_handle" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+          </svg>
+        </a>
+      </div>
+      
+      <div class="footer-copyright mt-3">
+        <p>&copy; {{ '' | currentYear }} shift48.com All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+  }
+  
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+  }
+  
+  @media (max-width: 768px) {
+    .footer-nav ul {
+      gap: var(--spacing-md);
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

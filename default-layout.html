@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  {# メタタグ #}
+  <title>{% if title %}{{ title }} | {% endif %}shift48.com - AI学習記録 & ガジェット紹介ブログ</title>
+  <meta name="description" content="{{ description | default('AI学習記録とガジェット紹介のブログサイト。最新AI技術やおすすめガジェットの情報を発信しています。') }}">
+  
+  {# OGP設定 #}
+  <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}shift48.com">
+  <meta property="og:description" content="{{ description | default('AI学習記録とガジェット紹介のブログサイト。最新AI技術やおすすめガジェットの情報を発信しています。') }}">
+  <meta property="og:type" content="{% if ogType %}{{ ogType }}{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/images/og-image.jpg">
+  <meta property="og:site_name" content="shift48.com">
+  
+  {# Twitter Card #}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@your_twitter_handle">
+  <meta name="twitter:title" content="{% if title %}{{ title }} | {% endif %}shift48.com">
+  <meta name="twitter:description" content="{{ description | default('AI学習記録とガジェット紹介のブログサイト。最新AI技術やおすすめガジェットの情報を発信しています。') }}">
+  <meta name="twitter:image" content="{{ site.url }}/images/og-image.jpg">
+  
+  {# Favicon #}
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  {# CSS #}
+  <link rel="stylesheet" href="/styles/main.css">
+  
+  {# Schema.org構造化データ #}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "{% if schemaType %}{{ schemaType }}{% else %}WebSite{% endif %}",
+      "url": "{{ site.url }}{{ page.url }}",
+      "name": "{% if title %}{{ title }}{% else %}shift48.com - AI学習記録 & ガジェット紹介ブログ{% endif %}",
+      "description": "{{ description | default('AI学習記録とガジェット紹介のブログサイト。最新AI技術やおすすめガジェットの情報を発信しています。') }}"
+      {% if schemaType === "BlogPosting" %}
+      ,
+      "author": {
+        "@type": "Person",
+        "name": "サイト運営者"
+      },
+      "datePublished": "{{ date | isoDate }}",
+      "image": "{{ site.url }}/images/posts/{{ featuredImage | default('default-image.jpg') }}"
+      {% endif %}
+    }
+  </script>
+  
+  {# Google AdSense (審査後に有効にする) #}
+  <!--
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  -->
+</head>
+<body>
+  <div class="site-wrapper">
+    {# ヘッダー #}
+    {% include "includes/header.njk" %}
+    
+    {# メニューオーバーレイ (モバイル用) #}
+    <div class="menu-overlay"></div>
+    
+    {# メインコンテンツ #}
+    <main class="main-content">
+      <div class="container">
+        {% block content %}
+          {# 各ページのコンテンツがここに入ります #}
+        {% endblock %}
+      </div>
+    </main>
+    
+    {# フッター #}
+    {% include "includes/footer.njk" %}
+    
+    {# JavaScriptファイル #}
+    <script src="/scripts/main.js"></script>
+  </div>
+</body>
+</html>

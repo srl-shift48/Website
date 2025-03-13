@@ -1,0 +1,37 @@
+{
+  "name": "shift48-blog",
+  "version": "1.0.0",
+  "description": "AI学習記録 & ガジェット紹介ブログ",
+  "main": "index.js",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "debug": "DEBUG=* eleventy",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [
+    "blog",
+    "AI",
+    "gadget",
+    "11ty",
+    "netlify"
+  ],
+  "author": "shift48.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "@netlify/plugin-lighthouse": "^5.0.0",
+    "luxon": "^3.4.4",
+    "markdown-it": "^14.0.0",
+    "markdown-it-anchor": "^8.6.7"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
