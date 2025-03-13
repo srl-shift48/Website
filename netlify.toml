@@ -67,7 +67,9 @@
   
   [plugins.inputs]
     output_path = "lighthouse-results"
-    fail_on_a11y = false
+    # アクセシビリティスコアに関わらずデプロイを成功させる設定
+    [plugins.inputs.thresholds]
+      accessibility = 0
 
 # Edge Functions設定
 # [functions]
