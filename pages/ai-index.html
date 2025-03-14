@@ -1,0 +1,102 @@
+---
+layout: layouts/default.njk
+title: AI記事一覧
+description: AI技術、大規模言語モデル（LLM）、プロンプトエンジニアリング、生成AIなどに関する記事一覧。最新のAI技術や活用テクニックを探索しましょう。
+eleventyNavigation:
+  key: AI
+  order: 2
+pagination:
+  data: collections.aiPosts
+  size: 9
+  alias: posts
+---
+
+{% block content %}
+<div class="category-header mb-4">
+  <div class="card">
+    <h1>AI技術の記事一覧</h1>
+    <p>大規模言語モデル（LLM）、プロンプトエンジニアリング、生成AI、AI開発などに関する記事を掲載しています。最新のAI技術や実践的な活用テクニックを探索しましょう。</p>
+  </div>
+</div>
+
+<div class="two-column">
+  <div class="primary-content">
+    {# AI記事一覧 #}
+    <div class="posts-list">
+      <div class="posts-grid">
+        {% for post in posts %}
+          <div class="post-card card">
+            <h2 class="card-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+            <div class="card-meta">
+              <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+            </div>
+            <div class="card-content">
+              <p>{{ post.data.description | truncate(150) }}</p>
+            </div>
+            <div class="card-footer">
+              <a href="{{ post.url }}" class="btn">続きを読む</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      
+      {# ページネーション #}
+      {% if pagination.pages.length > 1 %}
+        <nav class="pagination mt-4" aria-label="ページネーション">
+          <ul>
+            {% if pagination.href.previous %}
+              <li><a href="{{ pagination.href.previous }}" class="btn">前のページ</a></li>
+            {% endif %}
+            
+            {% for pageUrl in pagination.hrefs %}
+              <li>
+                <a 
+                  href="{{ pageUrl }}" 
+                  class="pagination-link {% if pagination.hrefs[pagination.pageNumber] === pageUrl %}active{% endif %}"
+                >
+                  {{ loop.index }}
+                </a>
+              </li>
+            {% endfor %}
+            
+            {% if pagination.href.next %}
+              <li><a href="{{ pagination.href.next }}" class="btn">次のページ</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+  </div>
+  
+  {# サイドバー #}
+  <div class="sidebar">
+    {% include "includes/sidebar.njk" %}
+  </div>
+</div>
+
+<style>
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+  }
+  
+  .pagination ul {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-sm);
+  }
+  
+  .pagination-link {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+  }
+  
+  .pagination-link.active {
+    background-color: var(--link-color);
+    color: white;
+  }
+</style>
+{% endblock %}

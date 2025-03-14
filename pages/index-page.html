@@ -1,0 +1,92 @@
+---
+layout: layouts/default.njk
+title: AI学習記録 & ガジェット紹介ブログ
+description: 最新のAI技術の学習記録とガジェットレビューを発信するブログ。プロンプトエンジニアリングや大規模言語モデル（LLM）の活用法、おすすめガジェットなどを紹介しています。
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+
+{% block content %}
+<div class="hero-section mb-4">
+  <div class="card">
+    <h1>AI学習記録 & ガジェットレビュー</h1>
+    <p>最新のAI技術とガジェット情報を発信するブログです。プロンプトエンジニアリングのテクニックや大規模言語モデル（LLM）の活用法、おすすめガジェットのレビューなど、実践的な情報を提供しています。</p>
+  </div>
+</div>
+
+<div class="two-column">
+  <div class="primary-content">
+    {# カテゴリーセクション #}
+    <div class="category-highlight mb-4">
+      <div class="category-grid">
+        <div class="category-card card">
+          <h2 class="card-title">AI技術</h2>
+          <p>最新のAI技術、LLM、プロンプトエンジニアリング、生成AIなどの情報を発信しています。AI関連の学習記録や活用テクニックを探索しましょう。</p>
+          <a href="/ai/" class="btn mt-2">AI記事一覧</a>
+        </div>
+        <div class="category-card card">
+          <h2 class="card-title">ガジェット</h2>
+          <p>スマートフォン、イヤホン、スマートホームデバイスなど、おすすめガジェットのレビューや活用法を紹介しています。</p>
+          <a href="/gadget/" class="btn mt-2">ガジェット記事一覧</a>
+        </div>
+      </div>
+    </div>
+    
+    {# 最新記事セクション #}
+    <div class="latest-posts">
+      <h2 class="section-title">最新記事</h2>
+      <div class="posts-grid">
+        {% for post in collections.posts | reverse | limit(6) %}
+          <div class="post-card card">
+            <h3 class="card-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+            <div class="card-meta">
+              <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time> | 
+              カテゴリー: <a href="/{{ post.data.category | default('ai') }}/">{{ post.data.category | capitalize | default('AI') }}</a>
+            </div>
+            <div class="card-content">
+              <p>{{ post.data.description | truncate(120) }}</p>
+            </div>
+            <div class="card-footer">
+              <a href="{{ post.url }}" class="btn">続きを読む</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      
+      <div class="text-center mt-3">
+        <a href="/all-posts/" class="btn">すべての記事を見る</a>
+      </div>
+    </div>
+  </div>
+  
+  {# サイドバー #}
+  <div class="sidebar">
+    {% include "includes/sidebar.njk" %}
+  </div>
+</div>
+
+<style>
+  .hero-section h1 {
+    color: var(--text-accent);
+  }
+  
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
+  
+  .section-title {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--border-color);
+  }
+  
+  @media (max-width: 768px) {
+    .category-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+{% endblock %}
