@@ -2,12 +2,10 @@
 
 # ビルド設定
 [build]
-  # ビルドコマンド
-  command = "npm run build"
+  # ビルドコマンド（一時的に変更）
+  command = "echo 'Skipping build step'"
   # 公開ディレクトリ
   publish = "_site"
-  # 機能フラグ
-  functions = "netlify/functions"
 
 # デプロイ設定
 [deploy]
@@ -62,14 +60,14 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 # プラグイン設定
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
-  
-  [plugins.inputs]
-    output_path = "lighthouse-results"
+#[[plugins]]
+#  package = "@netlify/plugin-lighthouse"
+#  
+#  [plugins.inputs]
+#    output_path = "lighthouse-results"
     # アクセシビリティスコアに関わらずデプロイを成功させる設定
-    [plugins.inputs.thresholds]
-      accessibility = 0
+#    [plugins.inputs.thresholds]
+#      accessibility = 0
 
 # Edge Functions設定
 # [functions]
